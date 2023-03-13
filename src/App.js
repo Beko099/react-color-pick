@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Wrapper } from './components/Wrapper' // нужно создать
+import { Circle } from './components/Circle' // нужно создать
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  const [color, setColor] = useState(0);
+  function changeColor(newColor) {
+      setColor(newColor);
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Wrapper color={color}>
+        {[1, 2, 3, 4, 5].map((num) => {
+          return (
+            <Circle key={num}
+            count={num}
+            changeSetColor={changeColor}
+
+            
+            />
+          );
+        })}
+      </Wrapper>
   );
 }
-
-export default App;
